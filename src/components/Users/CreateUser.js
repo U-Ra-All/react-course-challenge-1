@@ -3,6 +3,7 @@ import Card from "../UI/Card";
 import Button from "../UI/Button";
 
 import styles from "./CreateUser.module.css";
+import ErrorModal from "../UI/ErrorModal";
 
 const CreateUser = (props) => {
   const [inputName, setInputName] = useState("");
@@ -31,25 +32,28 @@ const CreateUser = (props) => {
   };
 
   return (
-    <Card className={styles.input}>
-      <form onSubmit={createUserHandler}>
-        <label htmlFor="name">Имя</label>
-        <input
-          id="name"
-          type="text"
-          onChange={nameChangeHandler}
-          value={inputName}
-        />
-        <label htmlFor="age">Возраст</label>
-        <input
-          id="age"
-          type="number"
-          onChange={ageChangeHandler}
-          value={inputAge}
-        />
-        <Button type="submit">Добавить Пользователя</Button>
-      </form>
-    </Card>
+    <div>
+      <ErrorModal title="Произошла Ошибка!" message="Что-то пошло не так..." />
+      <Card className={styles.input}>
+        <form onSubmit={createUserHandler}>
+          <label htmlFor="name">Имя</label>
+          <input
+            id="name"
+            type="text"
+            onChange={nameChangeHandler}
+            value={inputName}
+          />
+          <label htmlFor="age">Возраст</label>
+          <input
+            id="age"
+            type="number"
+            onChange={ageChangeHandler}
+            value={inputAge}
+          />
+          <Button type="submit">Добавить Пользователя</Button>
+        </form>
+      </Card>
+    </div>
   );
 };
 
